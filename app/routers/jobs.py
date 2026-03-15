@@ -7,8 +7,9 @@ from .. import model
 from ..schemas import JobsOut, Jobs, CreateJobs
 from ..database import get_db
 
-router = APIRouter('/jobs',
-                   tags=['Jobs']
+router = APIRouter(
+    prefix='/jobs',
+    tags=['Jobs']
 )
 
 @router.get('/jobs/inactive-jobs')
