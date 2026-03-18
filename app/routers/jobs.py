@@ -51,11 +51,11 @@ def delete_job(job_id: int, db: Session = Depends(get_db)):
 def search_jobs(jobs = Jobs, db: Session = Depends(get_db), company_name: Optional[str] = "", 
                 job_title: Optional[str] = ""):
     available_jobs = db.query(model.Job).filter(model.Job.company_name.contains(company_name),
-                                                model.Job.job_title.contains(job_title))
-    if len(list(available_jobs))==0:
+                                                model.Job.job_title.contains(job_title)).all()
+    if not available_jobs:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail="Job not found")
-    return available_jobs.all()
+    return available_jobs
 
 @router.patch('/jobs/{id}', status_code=status.HTTP_201_CREATED)
 def update_jobs(id: int, jobs: CreateJobs, db: Session = Depends(get_db)):
