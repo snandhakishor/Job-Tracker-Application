@@ -12,3 +12,11 @@ class Job(Base):
     job_board = Column(String(200), nullable=True)
     job_location = Column(String(200), nullable=True)
     status = Column(String(200), default="pending")
+
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255), nullable=False)
+    email = Column(String(255), nullable=False, unique=True)
+    password = Column(String(255), nullable=False)
