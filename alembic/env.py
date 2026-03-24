@@ -9,8 +9,8 @@ from app.config import settings
 # access to the values within the .ini file in use.
 config = context.config
 config.set_main_option("sqlalchemy.url",
-                       f"""mysql+mysqlconnector://{settings.database_username}:{settings.database_password}
-                       @{settings.database_hostname}:{settings.database_port}/{settings.database_name}""")
+                       f"mysql+mysqlconnector://{settings.database_username}:{settings.database_password}"
+                       f"@{settings.database_hostname}:{settings.database_port}/{settings.database_name}")
 
 db_url = os.getenv("DATABASE_URL")
 

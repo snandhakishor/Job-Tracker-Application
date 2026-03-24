@@ -3,8 +3,8 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from .config import settings
 
 
-DATABASE_URL = f"""mysql+mysqlconnector://{settings.database_username}:{settings.database_password}
-                @{settings.database_hostname}:{settings.database_port}/{settings.database_name}"""
+DATABASE_URL = (f"mysql+mysqlconnector://{settings.database_username}:{settings.database_password}@"
+                f"{settings.database_hostname}:{settings.database_port}/{settings.database_name}")
 
 engine = create_engine(DATABASE_URL)
 
